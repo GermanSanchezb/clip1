@@ -1,0 +1,48 @@
+header{
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+}
+figure img{
+    width: 100%;
+    height: auto;
+}
+h1{
+    text-align: center;
+}
+.lorem{
+    text-align: justify;
+}
+footer{
+    margin-top: 1%;
+    padding: 5%;
+}
+
+footer p{
+    text-align: center;
+    color: white;
+}
+footer p img{
+   width: 15px;
+}
+.titulos_table th{
+    text-align: center;
+    color:white
+}
+.thclass{
+    text-align: center;
+    font-size: 50px;
+}
+td{
+    text-align: center;
+}
+h2{
+    text-align: center;
+}
+.h2-contacto{
+    text-align: left;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+form{
+    margin-bottom: 5%;
+}
