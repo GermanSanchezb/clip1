@@ -20,11 +20,11 @@
         <!--Contenido Principal-->
         <section class="row">
             <div class="col-sm-12">
-                <article>
+                <article class="artAdv">
                     <h1>Bienvenidos al juego de Adivinanzas!</h1>
                     <div class="container">
                         <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                        <button type="button" class="btn btn-primary m-5 " data-toggle="modal" data-target="#myModal">
                             Dale Play!
                         </button>
                         
@@ -40,7 +40,7 @@
                                 </div>
                                 <div class="modal-body">
                                     <h1 id="adivinanza_titulo"></h1>
-                                    <input type="text" id="dato">
+                                    <input type="text" id="dato" required>
                                 </div>
                                 <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Salir</button>
@@ -53,7 +53,7 @@
                 </article>
             </div>
         </section>
-        <footer class="bg-dark">
+        <footer class="bg-dark mt-5">
             <p>
                 <img src="img/simbolo-de-copyright.png"> Todos los Derechos Reservados<br>
                 <a href="contacto.html"><img src="img/contacto.png" width="15px"> Contacto</a>
@@ -64,25 +64,36 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     <script>
+        //array con las preguntas y respuestas//
         var adivi_resp=[
             ['Cual es el deporte nacional de japon?','sumo'],
             ['Cual es el deporte favorito de los cantantes', 'lanzamiento de disco'],
             ['Muchos son los que corren, uno solo el que pita. Dos son los que paran y mas son los que gritan', 'futbol']
         ],
         pregunta, respuesta;
-       
+       //funcion pregunta//
         func_pregunta();
-
-        document.getElementById('boton').addEventListener('click', function(){
+       //evento del boton para que me saque una alerta de si es correcto o incorrecto//
+            document.getElementById('boton').addEventListener('click', function(){
             var entrada = document.getElementById("dato").value;
+            
+            var i;
 
-            if(entrada == respuesta){
-                alert("Acerto");
+            for(i = 0; i <= 3; i++){
+                if(entrada == respuesta){
+                    alert("Correcto");
+                    func_pregunta();
+                    break;
+                }
+                else{
+                    alert("incorrecta" + i + "/3");
+                    clear_text();       
+                }
             }
-            else{
-                alert("incorrecta");
-            }
-        });
+            })
+
+        // funcion pregunta recorre el array y acomoda preguntas y//
+        // para mostrar en pantalla//
         function func_pregunta(){
             var e;
             e = adivi_resp.splice( numAleat(0, adivi_resp.length-1), 1);
@@ -95,6 +106,9 @@
         function numAleat(min, max){
 			return Math.floor( Math.random() * (max - min + 1) ) + min;
 		}
+        function clear_text(){
+            document.getElementById("dato").value = "";
+        }
 
     </script>
 </body>
